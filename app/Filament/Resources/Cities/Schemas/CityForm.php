@@ -15,6 +15,7 @@ class CityForm
             ->components([
                 FileUpload::make('image')
                     ->image()
+                    ->directory('cities')
                     ->required()
                     ->columnSpan(2),
                 TextInput::make('name')
