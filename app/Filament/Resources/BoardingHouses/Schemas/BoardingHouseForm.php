@@ -12,6 +12,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Illuminate\Support\Str;
 use Filament\Forms\Components\Repeater;
+use Filament\Forms\Components\Toggle;
 
 class BoardingHouseForm
 {
@@ -54,6 +55,7 @@ class BoardingHouseForm
                         Tab::make('Bonus Kos')
                             ->schema([
                                 Repeater::make('bonuses')
+                                    ->relationship('bonuses')
                                     ->schema([
                                         FileUpload::make('image')
                                             ->image()
@@ -65,7 +67,38 @@ class BoardingHouseForm
                                             ->required(),
                                     ]),
                             ]),
-                    ])
+                        Tab::make('Kamar')
+                            ->schema([
+                                Repeater::make('rooms')
+                                    ->relationship('rooms')
+                                    ->schema([
+                                        TextInput::make('name')
+                                            ->required(),
+                                        TextInput::make('room_type')
+                                            ->required(),
+                                        TextInput::make('square_feet')
+                                            ->numeric()
+                                            ->required(),
+                                        TextInput::make('capacity')
+                                            ->numeric()
+                                            ->required(),
+                                        TextInput::make('price_per_month')
+                                            ->numeric()
+                                            ->prefix('IDR')
+                                            ->required(),
+                                        Toggle::make('is_available')
+                                            ->required(),
+                                        Repeater::make('images')
+                                            ->relationship('images')
+                                            ->schema([
+                                                FileUpload::make('image')
+                                                    ->image()
+                                                    ->directory('rooms')
+                                                    ->required(),
+                                            ]),
+                                    ]),
+                            ]),
+                    ])->columnSpan(2)
             ]);
     }
 }
