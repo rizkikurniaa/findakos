@@ -21,6 +21,7 @@ class TestimonialsTable
         return $table
             ->columns([
                 ImageColumn::make('photo')
+                    ->disk('public')
                     ->searchable(),
                 TextColumn::make('boardingHouse.name'),
                 TextColumn::make('name')

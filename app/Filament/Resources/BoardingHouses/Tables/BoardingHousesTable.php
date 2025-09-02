@@ -27,6 +27,7 @@ class BoardingHousesTable
                     ->money('IDR', true)
                     ->sortable(),
                 ImageColumn::make('thumbnail')
+                    ->disk('public')
                     ->searchable(),
                 TextColumn::make('created_at')
                     ->dateTime()
