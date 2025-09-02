@@ -4,6 +4,9 @@ namespace App\Filament\Resources\Testimonials\Schemas;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
+use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Textarea;
 
 class TestimonialForm
 {
@@ -11,16 +14,25 @@ class TestimonialForm
     {
         return $schema
             ->components([
-                TextInput::make('boarding_house_id')
+                FileUpload::make('photo')
+                    ->image()
+                    ->directory('testimonials')
                     ->required()
-                    ->numeric(),
-                TextInput::make('photo')
+                    ->columnSpan(2),
+                Select::make('boarding_house_id')
+                    ->relationship('boardingHouse', 'name')
+                    ->columnSpan(2)
                     ->required(),
-                TextInput::make('content')
+                Textarea::make('content')
+                    ->columnSpan(2)
+                    ->required(),
+                TextInput::make('name')
                     ->required(),
                 TextInput::make('rating')
                     ->required()
-                    ->numeric(),
+                    ->numeric()
+                    ->minValue(1)
+                    ->maxValue(5),
             ]);
     }
 }
