@@ -16,6 +16,7 @@ class TestimonialForm
             ->components([
                 FileUpload::make('photo')
                     ->image()
+                    ->disk('public')
                     ->directory('testimonials')
                     ->required()
                     ->columnSpan(2),

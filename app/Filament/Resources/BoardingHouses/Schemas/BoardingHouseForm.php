@@ -26,6 +26,7 @@ class BoardingHouseForm
                             ->schema([
                                 FileUpload::make('thumbnail')
                                     ->image()
+                                    ->disk('public')
                                     ->directory('boarding_houses')
                                     ->required(),
                                 TextInput::make('name')
@@ -59,6 +60,7 @@ class BoardingHouseForm
                                     ->schema([
                                         FileUpload::make('image')
                                             ->image()
+                                            ->disk('public')
                                             ->directory('bonuses')
                                             ->required(),
                                         TextInput::make('name')
@@ -93,6 +95,7 @@ class BoardingHouseForm
                                             ->schema([
                                                 FileUpload::make('image')
                                                     ->image()
+                                                    ->disk('public')
                                                     ->directory('rooms')
                                                     ->required(),
                                             ]),

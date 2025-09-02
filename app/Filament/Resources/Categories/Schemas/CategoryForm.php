@@ -15,6 +15,7 @@ class CategoryForm
             ->components([
                 FileUpload::make('image')
                     ->image()
+                    ->disk('public')
                     ->directory('categories')
                     ->required()
                     ->columnSpan(2),

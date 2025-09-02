@@ -15,6 +15,7 @@ class CityForm
             ->components([
                 FileUpload::make('image')
                     ->image()
+                    ->disk('public')
                     ->directory('cities')
                     ->required()
                     ->columnSpan(2),
