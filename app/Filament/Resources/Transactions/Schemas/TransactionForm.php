@@ -15,12 +15,12 @@ class TransactionForm
             ->components([
                 TextInput::make('code')
                     ->required(),
-                TextInput::make('boarding_house_id')
-                    ->required()
-                    ->numeric(),
-                TextInput::make('room_id')
-                    ->required()
-                    ->numeric(),
+                Select::make('boarding_house_id')
+                    ->relationship('boardingHouse', 'name')
+                    ->required(),
+                Select::make('room_id')
+                    ->relationship('room', 'name')
+                    ->required(),
                 TextInput::make('name')
                     ->required(),
                 TextInput::make('email')
@@ -31,15 +31,19 @@ class TransactionForm
                     ->tel()
                     ->required(),
                 Select::make('payment_method')
-                    ->options(['down_payment' => 'Down payment', 'full_payment' => 'Full payment']),
-                TextInput::make('payment_status'),
+                    ->options(['down_payment' => 'Down Payment', 'full_payment' => 'Full Payment'])
+                    ->required(),
+                Select::make('payment_status')
+                    ->options(['pending' => 'Pending', 'paid' => 'Paid'])
+                    ->required(),
                 DatePicker::make('start_date')
                     ->required(),
                 TextInput::make('duration')
                     ->required()
                     ->numeric(),
                 TextInput::make('total_amount')
-                    ->numeric(),
+                    ->numeric()
+                    ->prefix('IDR'),
                 DatePicker::make('transaction_date'),
             ]);
     }
