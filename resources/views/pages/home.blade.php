@@ -77,7 +77,7 @@
                                 <p class="text-sm text-ngekos-grey">4 People</p>
                             </div>
                             <hr class="border-[#F1F2F6]">
-                            <p class="font-semibold text-lg text-ngekos-orange">Rp{{ $boardingHouse->price}}<span
+                            <p class="font-semibold text-lg text-ngekos-orange">Rp{{ number_format($boardingHouse->price, 0, ',' , '.') }}<span
                                     class="text-sm text-ngekos-grey font-normal">/bulan</span></p>
                         </div>
                     </div>
@@ -111,7 +111,7 @@
                     <h3 class="font-semibold">
                         {{ $city->name }}
                     </h3>
-                    <p class="text-sm text-ngekos-grey">1,304 Kos</p>
+                    <p class="text-sm text-ngekos-grey">{{ $city->boardingHouses->count() }} Kos</p>
                 </div>
             </div>
         </a>
@@ -153,7 +153,7 @@
                         <p class="text-sm text-ngekos-grey">4 People</p>
                     </div>
                     <hr class="border-[#F1F2F6]">
-                    <p class="font-semibold text-lg text-ngekos-orange">Rp{{$boardingHouse->price}}<span
+                    <p class="font-semibold text-lg text-ngekos-orange">Rp{{ number_format($boardingHouse->price, 0, ',' , '.') }}<span
                             class="text-sm text-ngekos-grey font-normal">/bulan</span></p>
                 </div>
             </div>
