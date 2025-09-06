@@ -15,4 +15,9 @@ class Category extends Model
         'name',
         'slug',
     ];
+
+    public function boardingHouses()
+    {
+        return $this->hasMany(BoardingHouse::class);
+    }
 }
